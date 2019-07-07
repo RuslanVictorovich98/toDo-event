@@ -1,6 +1,4 @@
 body {
-  margin: 0;
-  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -11,4 +9,89 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  background: #1D1D1D;
+  color: white;
+}
+
+
+.header {
+  background: #232323;
+  margin-bottom: 10px; 
+  padding: 10px;
+  padding-left: 10%;
+}
+.header h3 {
+  background: #232323;
+  
+}
+/* main */
+.main {
+  margin: 0% 10% 0% 10%;
+  
+}
+
+
+/* todo-list */
+.todo-list-addList {
+  /* border: 1px solid red; */
+}
+.todo-list-addList button {
+  margin-right: 20px;
+}
+
+.todo-list-button-add {
+  margin-top: 3%;
+  margin-bottom: 20px;
+  /* position: fixed; */
+  /* left: 50%; */
+  /* transform: translate(-50%, 0); */
+}
+
+.todo-list-input {
+  margin-bottom: 20px;
+  margin-top: 10px;
+  padding: 3px;
+  width: 80%;
+  /* margin-left: 15%; */
+  background: white;
+  border-radius: 3px;
+  border: 1px solid white;
+  color: black;
+  /* float: left; */
+  white-space: normal;
+}
+.active-finish {
+  position: fixed;
+  display: inline;
+  margin-left: 60%;
+  /* margin-top: 42px; */
+  margin-top: 2%;
+}
+
+.todo-list-options {
+  /* display: block; */
+  color: black;
+  background: white;
+
+  /* margin-left: 5%; */
+  width: 19%;
+  padding: 5px;
+  margin-top: -52px;
+  border-radius: 3px;
+
+  float: right;
+}
+
+/* details-list */
+.all_music_main_list {
+  margin: 5%;
+}
+
+.all_music_main_list:hover > span {
+  color: greenyellow;
 }
