@@ -89,9 +89,35 @@ code {
 
 /* details-list */
 .all_music_main_list {
-  margin: 5%;
+  margin: 3%;
+  /* border: 1px solid red; */
 }
 
 .all_music_main_list:hover > span {
-  color: greenyellow;
+  color: #00A745;
+}
+
+.listing-finish-button {
+  /* width: 100%; */
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  /* margin: 10px; */
+}
+
+.listing-actual-finish {
+  /* border: 1px solid red; */
+  height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 10px;
+}
+
+div::-webkit-scrollbar {
+  width: 8px;  /* remove scrollbar space */
+  background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+div::-webkit-scrollbar-thumb {
+  background: #00A745;
+  border-radius: 20px;
 }

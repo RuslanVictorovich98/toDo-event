@@ -2,15 +2,13 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {create} from '../actions/index';
+import {actual} from '../actions/index';
+
 
 class TodoList extends React.Component {
 
     state = {
         create: false,
-        obj: {
-            name: "Alex",
-            actual: 2,
-        }
     }
 
     create = () => {
@@ -63,15 +61,22 @@ class TodoList extends React.Component {
             )
         }
     }
-    // actualFinish = () => {
-    //     this.setState({activeFinish: true})
+   
+    // updateFinishList () {
+    // //     console.log("hello");
+
+    //     return () => this.props.actual(!this.props.activeFinish);
+        
     // }
 
     activeFinish () {
         return(
             <div className="active-finish" >
                 <div className="onoffswitch">
-                    <input type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch"  onClick={this.actualFinish}/>
+                    <input type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch"  onClick={() => this.props.actual(!this.props.activeFinish)}/>
+                    {/* <input type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch"  
+                        onClick={this.updateFinishList}/> */}
+
                     <label className="onoffswitch-label" htmlFor="myonoffswitch" >
                         <span className="onoffswitch-inner"></span>
                         <span className="onoffswitch-switch"></span>
@@ -79,7 +84,7 @@ class TodoList extends React.Component {
                 </div>
             </div>
         )
-    }
+    };
 
     
 
@@ -94,10 +99,17 @@ class TodoList extends React.Component {
 }
 
 
+function mapStateToProps (state) {
+    return {
+        activeFinish: state.activeFinish
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
       create: (i) => dispatch(create(i)),
+      actual: (i) => dispatch(actual(i))
     };
   }
 
-export default connect(null, mapDispatchToProps) (TodoList);
+export default connect(mapStateToProps, mapDispatchToProps) (TodoList);

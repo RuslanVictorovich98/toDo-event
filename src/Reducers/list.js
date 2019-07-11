@@ -1,4 +1,4 @@
-import {EVENT_CREATE, EVENT_REMOVE, EVENT_EDIT} from '../actions/index';
+import {EVENT_CREATE, EVENT_REMOVE, EVENT_EDIT, EVENT_FINISH} from '../actions/index';
 
     const taskList = {
         actual: JSON.parse(localStorage.getItem("actual")),
@@ -9,10 +9,19 @@ export default function taskListReducer (state = taskList.actual, action) {
     
     switch (action.type) {
         case EVENT_CREATE:
-            let x = [...state, action.payload];
-            localStorage.setItem('actual',JSON.stringify(x))
-
-            return JSON.parse(localStorage.getItem("actual"));
+            
+            
+            if (!JSON.parse(localStorage.getItem("actual"))) {
+                localStorage.setItem('actual',JSON.stringify([action.payload]))
+                return JSON.parse(localStorage.getItem("actual"));
+                
+            } else {
+                let x = [...state, action.payload];
+                localStorage.setItem('actual',JSON.stringify(x))
+                return JSON.parse(localStorage.getItem("actual"));
+            }
+            
+            // console.log(x);
 
         case EVENT_EDIT:
             let edit_state = state.slice();
@@ -31,7 +40,19 @@ export default function taskListReducer (state = taskList.actual, action) {
             return JSON.parse(localStorage.getItem("actual"));
             // return state.splice(action.payload, 1),[...state];
 
+        case EVENT_FINISH:
+            let finish_state = state;
+            let finishStore =  JSON.parse(localStorage.getItem("finish"));
+            let finishObject = Object.assign({}, finish_state.splice(action.payload, 1));
             
+            console.log(finishStore);
+            
+
+            finishStore.push(finishObject["0"]);
+            localStorage.setItem('finish', JSON.stringify(finishStore) )
+            localStorage.setItem('actual', JSON.stringify(finish_state) )
+
+            return JSON.parse(localStorage.getItem("actual"));
             
         default:
             return state;
